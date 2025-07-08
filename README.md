@@ -2,19 +2,17 @@
 
 **TheTown** est un jeu vidéo développé par notre équipe, mêlant point & click, réflexion, jeu d'horreur, exploration, ... dans un univers captivant et original. Ce repo contient tout le code source, les assets et la documentation nécessaires au bon fonctionnement du projet.
 
----
 
 ## 🛠️ Technologies utilisées
 
 - Unity 6000.0.30f1, FMOD 2.0.3, Blender
 - C#
-  
----
 
 ## 📂 Structure du dépôt
 
+```
 TheTown/
-├── FMOD/ # Projet FMOD contenant le son du jeu 
+├── FMOD/ # Projet FMOD contenant le son du jeu
 ├── TheTown/ # Projet Unity
     └── Assets/ # Dossier source contenant les textures, assets, scripts
         ├── Scripts/
@@ -38,9 +36,8 @@ TheTown/
             ├── Models3D/
             ├── Sprites/
             └── Textures/
-└── Docs/ # Documentation du jeu 
-
----
+└── Docs/ # Documentation du jeu
+```
 
 ## 🧭 Conventions internes
 
@@ -57,8 +54,6 @@ Pour faciliter la contribution et la maintenance :
   > CA pour Critère d'Acceptation, pour clore l'issue quand tous les critères sont remplis
   - `🎨 #11 CA-2 Import Bar Model3D`
 - **Langue principale du code :** Anglais
-
----
 
 ## 🚀 Lancement du projet
 
