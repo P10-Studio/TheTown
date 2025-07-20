@@ -5,3 +5,6 @@
 fmod.log
 
 fmod_editor.log
+
+# Ignore the FMOD Studio cache file
+.cache/
