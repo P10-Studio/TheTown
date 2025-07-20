@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
@@ -7,47 +9,48 @@ using Random = UnityEngine.Random;
 
 public class DialogueSystem : MonoBehaviour
 {
+    private static readonly int End = Animator.StringToHash("END");
+    private static readonly int Start = Animator.StringToHash("START");
+    
+    private readonly List<string> _skipLettersSound = new List<string>
+    {
+        ".", "!", "?", ",", ";", ":", "-", "—", "(", ")", "[", "]", "{", "}", "'", "\""
+    };
+
     [Header("Components")] 
-    [SerializeField] private CanvasGroup dialogueGroup;
+    [SerializeField] private Animator dialogueAnimator;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI speakerText;
-    [SerializeField] private AudioSource textTypingAudioSource;
     
     [Header("Settings")]
-    [SerializeField] private float textTypingSpeed = 0.05f;
+    [SerializeField] private float textTypingSpeed = 0.5f;
     [SerializeField] private InputActionReference skipDialogueAction;
-    [SerializeField] private float typingVolume = 0.5f;
     
     public bool isTyping;
+    public bool isEnabled = true;
     
     [SerializeField] private DialogueObject currentDialogue;
 
     private int _index;
     
+    // TODO: 
+    // Add delay before starting the dialogue
+    // Change the typing speed, because the audio is going too fast
+    // Add an end custom event where the outer script can subscribe to it
+    
     private void Awake()
     {
-        if (dialogueGroup == null)
-        {
-            dialogueGroup = GetComponent<CanvasGroup>();
-        }
-        
-        if (dialogueText == null)
-        {
-            dialogueText = GetComponentInChildren<TextMeshProUGUI>();
-        }
-        
         skipDialogueAction.action.performed += _ => SkipDialogue();
+        
+        skipDialogueAction.action.Enable();
+        
+        PlayDialogue(currentDialogue);
     }
 
-    public void PlayDialogue(DialogueObject dialogue, out bool success)
+    public void PlayDialogue(DialogueObject dialogue)
     {
-        if (isTyping)
-        {
-            success = false;
-            return;
-        }
-        
-        success = true;
+        isEnabled = true;
+        dialogueAnimator.SetTrigger(Start);
         currentDialogue = dialogue;
         StartDialogue(dialogue);
     }
@@ -62,34 +65,31 @@ public class DialogueSystem : MonoBehaviour
 
     private void NextLine()
     {
-        if (_index < currentDialogue.Replies.Length - 1)
-        {
-            _index++;
-            dialogueText.text = string.Empty;
-            StartCoroutine(TypeLine());
-        }
-        else
-        {
-            isTyping = false;   
-            
-            // TODO: end dialogue, trigger en event
-        }
+        _index++;
+        dialogueText.text = string.Empty;
+        StartCoroutine(TypeLine());
     }
 
     private IEnumerator TypeLine()
     {
+        isTyping = true;
         foreach (var c in currentDialogue.Replies[_index].text)
         {
-            var soundEffect = currentDialogue.Replies[_index].audioClip;
-            textTypingAudioSource.pitch = Random.Range(0.9f, 1.1f);
-            textTypingAudioSource.PlayOneShot(soundEffect, typingVolume);
+            if (!_skipLettersSound.Contains(c.ToString()))
+            {
+                AudioManager.Instance.PlayTypingSound();
+            }
+            
             dialogueText.text += c;
             yield return new WaitForSeconds(textTypingSpeed);
         }
+        isTyping = false;
     }
 
     public void SkipDialogue()
     {
+        if (!isEnabled) return;
+        
         if (isTyping)
         {
             StopAllCoroutines();
@@ -97,34 +97,20 @@ public class DialogueSystem : MonoBehaviour
             isTyping = false;
             return;
         }
-
-        if (_index < currentDialogue.Replies.Length - 1)
+        
+        if (_index == currentDialogue.Replies.Length - 1)
         {
-            NextLine();
+            EndDialogue();
+            return;
         }
-        else
-        {
-            isTyping = false;
-        }
+        
+        NextLine();
     }
 
-    private void Update()
+    private void EndDialogue()
     {
-        if (currentDialogue != null)
-        {
-            // skip dialogue action
-            
-        }
-        
-        // Check if the skip action is triggered
-        
-        if (dialogueText.text == currentDialogue.Replies[_index].text)
-        {
-            NextLine();
-        } else
-        {
-            StopAllCoroutines();
-            dialogueText.text = currentDialogue.Replies[_index].text;
-        }
+        dialogueAnimator.SetTrigger(End);
+        isTyping = false;
+        isEnabled = false;
     }
 }

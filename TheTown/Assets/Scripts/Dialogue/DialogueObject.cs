@@ -13,7 +13,6 @@ public class Replique
 public class DialogueObject : ScriptableObject
 {
     public string Name;
-    public string Description;
     public Replique[] Replies;
     public DialogueCondition Condition;
 }

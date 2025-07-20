@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Bartender
   m_EditorClassIdentifier: 
   Name: Joe
-  Description: 
   Replies:
-  - text: Welcome man, what do you want to drink now !
+  - text: Welcome man ! what do you want to drink now ?
     speaker: Joe
     portrait: {fileID: 0}
     audioClip: {fileID: 0}

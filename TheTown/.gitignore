@@ -97,3 +97,6 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# TextMesh Pro auto-generated files
+/[Aa]ssets/[Tt]extMesh[Pp]ro/Resources/Fonts & Materials/*.asset

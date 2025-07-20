@@ -150,6 +150,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1873484524}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &259147691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 259147692}
+  - component: {fileID: 259147693}
+  m_Layer: 0
+  m_Name: FMODEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &259147692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259147691}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1656225522}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &259147693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259147691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60266e65a3c4d118060edb4448038f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <TextTypingSound>k__BackingField:
+    Guid:
+      Data1: 1161269619
+      Data2: 1140078093
+      Data3: 1709846677
+      Data4: 1345323514
+    Path: event:/DialogueTyping
 --- !u!1 &305651816
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,15 +958,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190b3118d59351d41a12561841c7bcb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueGroup: {fileID: 1129180585}
+  dialogueAnimator: {fileID: 1129180587}
   dialogueText: {fileID: 2072310322}
   speakerText: {fileID: 1291976248}
-  textTypingAudioSource: {fileID: 0}
   textTypingSpeed: 0.05
   skipDialogueAction: {fileID: 4507355481873240413, guid: e5a35c853711c044fa3751d91f922460, type: 3}
-  typingVolume: 0.5
   isTyping: 0
-  currentDialogue: {fileID: 0}
+  currentDialogue: {fileID: 11400000, guid: 06356f28175fabf47b453e8349ce9e93, type: 2}
 --- !u!4 &699993216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 609704563672665339, guid: f81a94f64c863b1498b84e56b2878fd8, type: 3}
@@ -1505,6 +1554,7 @@ GameObject:
   - component: {fileID: 1129180584}
   - component: {fileID: 1129180585}
   - component: {fileID: 1129180586}
+  - component: {fileID: 1129180587}
   m_Layer: 0
   m_Name: DialogueHUD
   m_TagString: Untagged
@@ -1550,7 +1600,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129180581}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -1584,6 +1634,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1129180587
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129180581}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f7c8c824ddc1fdb42aa6b1c6e73e576d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1132469832
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,6 +2201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1656225522}
+  - component: {fileID: 1656225523}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -2148,9 +2221,22 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 259147692}
   m_Father: {fileID: 1651587177}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1656225523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656225521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a41e9ee8ae4bd0bc1e67447cde83ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1873484523
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,7 +2454,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -175, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
