@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: ../FMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638886286895870293
+  lastModified: 638888150982521896
   FileSizes:
   - Name: Desktop
-    Value: 5248
+    Value: 6624
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 3516647849415441141}
   cacheVersion: 131848
-  cacheTime: 638886286895870293
+  cacheTime: 638888150982521896
   SerializableEventsDict:
   - key: event:/DialogueTyping
     index: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   Path: ../FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638886263509938871
+  lastModified: 638887312856239468
   FileSizes:
   - Name: Desktop
     Value: 930
@@ -83,9 +83,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: DialogueTypingPitch
   StudioPath: 
-  Min: 0.9
-  Max: 1.1
-  Default: 1
+  Min: 0
+  Max: 1
+  Default: 0
   ID:
     data1: 3650183494
     data2: 1622160574
@@ -108,7 +108,7 @@ MonoBehaviour:
   Path: ../FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638886263509938871
+  lastModified: 638887312856229421
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -140,7 +140,7 @@ MonoBehaviour:
   - {fileID: 3525991738531632611}
   MinDistance: 1
   MaxDistance: 20
-  Length: 500
+  Length: 611
 --- !u!114 &8935706367206364467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
   Path: ../FMOD/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638877819641162545
+  lastModified: 638887312856264510
   FileSizes:
   - Name: Desktop
     Value: 506
