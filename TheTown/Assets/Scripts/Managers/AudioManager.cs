@@ -1,5 +1,3 @@
-
-using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 
@@ -34,7 +32,7 @@ public class AudioManager : MonoBehaviour
     public void PlayTypingSound()
     {
         var instance = RuntimeManager.CreateInstance(FMODEvents.Instance.TextTypingSound);
-        var pitch = Random.Range(0.9f, 1.1f);
+        var pitch = Random.Range(0f, 1f);
         instance.setParameterByName("DialogueTypingPitch", pitch);
         instance.start();
         instance.release();

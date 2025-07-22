@@ -17,25 +17,49 @@ MonoBehaviour:
   - text: Welcome man ! what do you want to drink now ?
     speaker: Joe
     portrait: {fileID: 0}
-    audioClip: {fileID: 0}
+    onDialogueEnd:
+      m_PersistentCalls:
+        m_Calls: []
   - text: Hello ! yes, do you have a bottle of water ?
     speaker: Clark
     portrait: {fileID: 0}
-    audioClip: {fileID: 0}
+    onDialogueEnd:
+      m_PersistentCalls:
+        m_Calls: []
   - text: Haha, little boy... sure, as you want !
     speaker: Joe
     portrait: {fileID: 0}
-    audioClip: {fileID: 0}
+    onDialogueEnd:
+      m_PersistentCalls:
+        m_Calls: []
   - text: Thanks
     speaker: Clark
     portrait: {fileID: 0}
-    audioClip: {fileID: 0}
+    onDialogueEnd:
+      m_PersistentCalls:
+        m_Calls: []
   - text: What's your name my boy ?
     speaker: Joe
     portrait: {fileID: 0}
-    audioClip: {fileID: 0}
+    onDialogueEnd:
+      m_PersistentCalls:
+        m_Calls: []
   - text: Oh yes ! My name is Clark
     speaker: Clark
     portrait: {fileID: 0}
-    audioClip: {fileID: 0}
+    onDialogueEnd:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4917860797898418266, guid: c761708e61db2f344b49e0c0ca9c5154, type: 3}
+          m_TargetAssemblyTypeName: DialogueSystem, Assembly-CSharp
+          m_MethodName: ONDIALOGUEEND
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   Condition: 0

@@ -1,29 +1,23 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using FMODUnity;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
-using Random = UnityEngine.Random;
 
 public class DialogueSystem : MonoBehaviour
 {
     private static readonly int End = Animator.StringToHash("END");
-    private static readonly int Start = Animator.StringToHash("START");
+    private static readonly int Start1 = Animator.StringToHash("START");
     
-    private readonly List<string> _skipLettersSound = new List<string>
-    {
-        ".", "!", "?", ",", ";", ":", "-", "—", "(", ")", "[", "]", "{", "}", "'", "\""
-    };
-
     [Header("Components")] 
     [SerializeField] private Animator dialogueAnimator;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI speakerText;
+    [SerializeField] private TextMeshProUGUI skipText;
     
     [Header("Settings")]
     [SerializeField] private float textTypingSpeed = 0.5f;
+    [SerializeField] private float textTypingSoundDelay = 0.5f;
     [SerializeField] private InputActionReference skipDialogueAction;
     
     public bool isTyping;
@@ -33,12 +27,7 @@ public class DialogueSystem : MonoBehaviour
 
     private int _index;
     
-    // TODO: 
-    // Add delay before starting the dialogue
-    // Change the typing speed, because the audio is going too fast
-    // Add an end custom event where the outer script can subscribe to it
-    
-    private void Awake()
+    private void Start()
     {
         skipDialogueAction.action.performed += _ => SkipDialogue();
         
@@ -50,13 +39,14 @@ public class DialogueSystem : MonoBehaviour
     public void PlayDialogue(DialogueObject dialogue)
     {
         isEnabled = true;
-        dialogueAnimator.SetTrigger(Start);
+        dialogueAnimator.SetTrigger(Start1);
         currentDialogue = dialogue;
-        StartDialogue(dialogue);
+        StartCoroutine(StartDialogue(dialogue));
     }
 
-    public void StartDialogue(DialogueObject dialogue)
+    private IEnumerator StartDialogue(DialogueObject dialogue)
     {
+        yield return new WaitForSeconds(0.5f); // Delay before starting the dialogue
         _index = 0;
         currentDialogue = dialogue;
         dialogueText.text = string.Empty;
@@ -73,17 +63,19 @@ public class DialogueSystem : MonoBehaviour
     private IEnumerator TypeLine()
     {
         isTyping = true;
-        foreach (var c in currentDialogue.Replies[_index].text)
+        StartCoroutine(TypingSoundCoroutine());
+        var currentReply = currentDialogue.Replies[_index];
+        
+        speakerText.text = currentReply.speaker;
+        
+        foreach (var c in currentReply.text)
         {
-            if (!_skipLettersSound.Contains(c.ToString()))
-            {
-                AudioManager.Instance.PlayTypingSound();
-            }
-            
             dialogueText.text += c;
             yield return new WaitForSeconds(textTypingSpeed);
         }
         isTyping = false;
+
+        currentReply.onDialogueEnd?.Invoke();
     }
 
     public void SkipDialogue()
@@ -97,6 +89,10 @@ public class DialogueSystem : MonoBehaviour
             isTyping = false;
             return;
         }
+
+        skipText.text = _index < currentDialogue.Replies.Length - 2 
+            ? "SKIP" 
+            : "END";
         
         if (_index == currentDialogue.Replies.Length - 1)
         {
@@ -112,5 +108,20 @@ public class DialogueSystem : MonoBehaviour
         dialogueAnimator.SetTrigger(End);
         isTyping = false;
         isEnabled = false;
+    }
+    
+    private IEnumerator TypingSoundCoroutine()
+    {
+        while (isTyping)
+        {
+            AudioManager.Instance.PlayTypingSound();
+            yield return new WaitForSeconds(textTypingSoundDelay);
+        }
+    }
+
+    public void ONDIALOGUEEND()
+    {
+        // TEMP METHOD TO TEST THE END OF DIALOGUE
+        Debug.Log("Dialogue ended.");
     }
 }
