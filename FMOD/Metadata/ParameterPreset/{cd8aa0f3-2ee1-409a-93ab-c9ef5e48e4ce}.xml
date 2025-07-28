@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{cd8aa0f3-2ee1-409a-93ab-c9ef5e48e4ce}">
+		<property name="name">
+			<value>DialogueTypingPitch</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0f772e16-a515-4320-9185-47ebf0f0490a}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{44860c8e-9e05-4bed-b80c-5f0a2f75b0d8}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{44860c8e-9e05-4bed-b80c-5f0a2f75b0d8}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

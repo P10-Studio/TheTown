@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: ../FMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638877819641142542
+  lastModified: 638888150982521896
   FileSizes:
   - Name: Desktop
-    Value: 506
+    Value: 6624
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -37,15 +37,18 @@ MonoBehaviour:
   - {fileID: 5134903538334545485}
   - {fileID: 8935706367206364467}
   - {fileID: -4259390987547172971}
-  EditorEvents: []
+  EditorEvents:
+  - {fileID: 8668403580171593112}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5134903538334545485}
   StringsBanks:
   - {fileID: 3516647849415441141}
   cacheVersion: 131848
-  cacheTime: 638877819641162545
-  SerializableEventsDict: []
+  cacheTime: 638888150982521896
+  SerializableEventsDict:
+  - key: event:/DialogueTyping
+    index: 0
 --- !u!114 &3516647849415441141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,10 +64,34 @@ MonoBehaviour:
   Path: ../FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638877819641105763
+  lastModified: 638887312856239468
   FileSizes:
   - Name: Desktop
-    Value: 816
+    Value: 930
+  Exists: 1
+--- !u!114 &3525991738531632611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/DialogueTyping/DialogueTypingPitch
+  m_EditorClassIdentifier: 
+  Name: DialogueTypingPitch
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3650183494
+    data2: 1622160574
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &5134903538334545485
 MonoBehaviour:
@@ -81,11 +108,39 @@ MonoBehaviour:
   Path: ../FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638877819641105763
+  lastModified: 638887312856229421
   FileSizes:
   - Name: Desktop
     Value: 1074
   Exists: 1
+--- !u!114 &8668403580171593112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DialogueTyping
+  m_EditorClassIdentifier: 
+  Path: event:/DialogueTyping
+  Guid:
+    Data1: 1161269619
+    Data2: 1140078093
+    Data3: 1709846677
+    Data4: 1345323514
+  Banks:
+  - {fileID: -4259390987547172971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 3525991738531632611}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 611
 --- !u!114 &8935706367206364467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +156,7 @@ MonoBehaviour:
   Path: ../FMOD/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638877819641162545
+  lastModified: 638887312856264510
   FileSizes:
   - Name: Desktop
     Value: 506

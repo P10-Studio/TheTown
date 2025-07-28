@@ -1,27 +1,30 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Camera cam;
 
-    void Start()
+    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         cam = Camera.main;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // lesft clic
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-                agent.SetDestination(target);
-            }
-        }
+        if (!Input.GetMouseButtonDown(0)) return;
+        
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
+
+        var ray = cam.ScreenPointToRay(Input.mousePosition);
+        
+        if (!Physics.Raycast(ray, out var hit)) return;
+        
+        var target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+        agent.SetDestination(target);
     }
+
 }

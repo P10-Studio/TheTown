@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{18c5e3f3-90fd-4e74-b142-b6b2d8a5419a}">
+		<property name="assetPath">
+			<value>SFX/Dialogue/DIALOGUE.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.0710204081632653</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e83bd5cf-5975-428c-b131-01d164ba64c0}</destination>
+		</relationship>
+	</object>
+</objects>
