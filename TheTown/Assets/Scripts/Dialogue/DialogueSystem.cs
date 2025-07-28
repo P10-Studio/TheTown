@@ -58,6 +58,7 @@ public class DialogueSystem : MonoBehaviour
         _index++;
         dialogueText.text = string.Empty;
         StartCoroutine(TypeLine());
+        currentDialogue.Replies[_index].onDialogueEnd?.Invoke();
     }
 
     private IEnumerator TypeLine()
@@ -74,8 +75,6 @@ public class DialogueSystem : MonoBehaviour
             yield return new WaitForSeconds(textTypingSpeed);
         }
         isTyping = false;
-
-        currentReply.onDialogueEnd?.Invoke();
     }
 
     public void SkipDialogue()
@@ -87,6 +86,7 @@ public class DialogueSystem : MonoBehaviour
             StopAllCoroutines();
             dialogueText.text = currentDialogue.Replies[_index].text;
             isTyping = false;
+            currentDialogue.Replies[_index].onDialogueEnd?.Invoke();
             return;
         }
 

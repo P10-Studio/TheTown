@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: ../FMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638888150982521896
+  lastModified: 638893087798593797
   FileSizes:
   - Name: Desktop
     Value: 6624
@@ -45,7 +45,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 3516647849415441141}
   cacheVersion: 131848
-  cacheTime: 638888150982521896
+  cacheTime: 638893087798593797
   SerializableEventsDict:
   - key: event:/DialogueTyping
     index: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   Path: ../FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638887312856239468
+  lastModified: 638893087798588099
   FileSizes:
   - Name: Desktop
     Value: 930
